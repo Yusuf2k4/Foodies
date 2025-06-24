@@ -12,8 +12,8 @@ export default function ImagePicker({ label, name }) {
     const file = e.target.files[0];
 
     if (!file) {
-      return;
       setPickedImage(null);
+      return;
     }
     const fileReader = new FileReader();
     fileReader.onload = () => {
