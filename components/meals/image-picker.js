@@ -2,15 +2,19 @@
 import { useRef, useState } from "react";
 import classes from "./image-picker.module.css";
 import Image from "next/image";
-export default function ImagePicker({ label, name }) {
+import { uploadURL } from "@/lib/getUrl";
+export default function ImagePicker({ label, name, title, handleFile }) {
   const [pickedImage, setPickedImage] = useState();
+  const [clicked, setClicked] = useState()
   const ref = useRef();
+
   function handlePick() {
     ref.current.click();
   }
-  function handleChange(e) {
-    const file = e.target.files[0];
 
+  async function handleChange(e) {
+    const file = e.target.files[0];
+    console.log(file);
     if (!file) {
       setPickedImage(null);
       return;
@@ -20,7 +24,10 @@ export default function ImagePicker({ label, name }) {
       setPickedImage(fileReader.result);
     };
     fileReader.readAsDataURL(file);
+    handleFile(file);
+    
   }
+
   return (
     <div className={classes.picker}>
       <label htmlFor={name}>{label}</label>
@@ -36,7 +43,7 @@ export default function ImagePicker({ label, name }) {
           className={classes.input}
           type="file"
           id={name}
-          accept="image/png image/jpeg"
+          accept="image/png, image/jpeg"
           name={name}
           ref={ref}
           onChange={handleChange}

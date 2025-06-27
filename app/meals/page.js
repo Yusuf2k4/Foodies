@@ -6,7 +6,7 @@ import { Suspense } from "react";
 
 async function Meals() {
   const meals = getMeals();
-  return <MealsGrid meals={meals}></MealsGrid>;
+  return <MealsGrid meals={meals} ></MealsGrid>;
 }
 export default function MealsPage() {
   return (

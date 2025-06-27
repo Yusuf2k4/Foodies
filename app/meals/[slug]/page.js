@@ -2,6 +2,7 @@ import Image from "next/image";
 import classes from "./page.module.css";
 import { getMealDetail } from "@/lib/meals";
 import { notFound } from "next/navigation";
+import ImageURL from "@/components/meals/image";
 
 export default function MealsDetail({ params }) {
   const meal = getMealDetail(params.slug);
@@ -13,7 +14,7 @@ export default function MealsDetail({ params }) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} alt={meal.title} fill />
+          <ImageURL image={meal.image}></ImageURL>
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>

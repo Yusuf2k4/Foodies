@@ -4,7 +4,9 @@ import classes from "./page.module.css";
 import ImageSlideshow from "@/components/images/image-slideshow";
 import { Navlink } from "@/components/header/NavLink";
 
+
 export default function Home() {
+ 
   return (
     <>
       <header className={classes.header}>
